@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: 'home#index'
   get 'home/index'
   get 'contacts/index'
   get 'contacts' => 'contacts#new'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
   resource :contacts, only: [:new, :create], path_names: { new: '' }
   resources :articles do
-    resources :comments
+    resources :comments, only: [:create, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

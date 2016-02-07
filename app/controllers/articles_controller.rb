@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-  def new
-  end
+  before_filter :authenticate_user!
 
   def create
     @article = Article.new(article_params)
@@ -24,6 +23,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+  end
+
+  def new
   end
 
   def show

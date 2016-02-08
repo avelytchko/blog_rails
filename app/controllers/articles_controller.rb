@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, only: :create
+  before_filter :authenticate_user!, only: [:create, :new, :destroy, :update]
 
   def create
     @article = Article.new(article_params)
